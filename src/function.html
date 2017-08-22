@@ -1,0 +1,105 @@
+<script>
+//처리 속도는 똑같음.
+//선언적 함수
+function add(a,b){
+	return a+b;
+}
+
+function sub(a,b){
+	return a-b;
+}
+
+function div(a,b){
+	return a/b;
+}
+
+var fun1=sub;
+//  변수   함수
+
+//익명함수. 함수 이름이 abc가 아님. "abc="를 빼줘도 됨. "abc"는 변수명. c언어의 함수포인터 개념.
+abc=function(a,b){
+	return a+b;
+}
+
+var c=add(4,6);
+var d=sub(4,6);
+var e=abc(4,6);
+
+fun1 = add;
+var f=fun1(10,4); //14가 나옴.
+
+var op=1;
+var op1=10;
+var op2=90;
+
+//1번째 방식
+if(op==1) console.log(add(op1,op2));
+if(op==2) console.log(sub(op1,op2));
+
+//2번째 방식
+if(op==1) v=add(op1,op2);
+if(op==2) v=sub(op1,op2);
+console.log(v);
+
+//3번째 방식 ==>가장 권장하는 방식
+if(op==1) f=add;
+if(op==2) f=sub;
+console.log(f(op1,op2));
+
+
+//새로운 함수가 필요할 때마다 개발자가 코드를 수정해야함
+fun(op,op1,op2){
+if(op==1) f = add;
+if(op==2) f = sub;
+if(op==3) f = mul;
+if(op==4) f = div;
+return f(op2,op3);
+}
+
+//익명함수를 통해 새롭게 추가적으로 지원되야 하는 코드를 바깥쪽으로 뺄 수 있음. 변화에 융통성을 가질 수 있음.
+
+//1번째
+f=power;
+var c=fun(f,0,10);
+function power(x) {x=x*x;}
+
+
+//2번째
+var c=fun(function (x,y){return x*y;},0,10);
+
+function fun(f,op1,op2){
+	return f(op1, op2);
+}
+
+
+//새로운 함수가 필요할 때마다 개발자가 코드를 수정해야함
+function power(a){
+	for(i=0;i<length.a;i++){
+		a[i]=a[i]*a[i];
+	}
+}
+a=[10,20,30];
+power(a);
+
+function add10(a){
+	for(i=0;i<length.a;i++){
+		a[i]=a[i]*+10;
+	}
+}
+
+function add2(a,offset){
+	for(i=0;i<length.a;i++){
+		a[i]=a[i]*+offset;
+	}
+}
+
+//변화에 융통성을 가지는 코드
+fun(a,function(x){return x*x;});
+fun(a,x->x*x);//java에서 가능한 코드. 위식과 같은 함수. 람다식. 
+/*개발자와 코드를 가져다쓰는 사람이랑 구분하기 위해서 람다식을 사용
+병렬처리 자동화 가능*/
+fun(a,f){
+	for(i=0;i<length.a;i++)
+		a[i]=f(i,a[i]);
+}
+</script>

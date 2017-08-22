@@ -1,0 +1,126 @@
+<script>
+function power2(a){
+	for(var i=0;i<a.length;i++){
+		a[i]=a[i]*a[i];
+	}
+}//함수정의는 맨 앞으로
+
+function f(a){
+	a=10; //f(a)에 a가 선언되어 있으므로 a는 local 변수
+}
+
+function f2(a){//a는 객체
+	a.name = '홍길동';
+	a.money = 100000;
+}
+
+
+</script>
+
+
+
+<script>
+//가급적이면 글로벌 변수를 쓰지 않는 것이 좋음
+//글로벌 변수는 트래킹이 어려움
+//보통 글로벌 변수 앞에 g로 선언. ex)gCount
+
+/* a=10; //window.a=10 과 동일 global 변수
+alert(a);
+
+
+var a=20; //global 변수
+fun();
+
+function fun(){
+	var a; //local 변수. local변수는 앞에 var을 써줌
+	b =20; //global 변수 앞에 window가 생략
+	alert(a);
+} */
+
+var arr=[10,20,30]; //제곱하고 싶음
+power2(arr);
+alert(arr);//javascript에서는 arr에서는 복사본이 아닌 원본을 넘겨줌.
+
+var b=20
+f(b);
+alert(b);//array는 복사본을 넘겨줌.
+//복사본을 넘겨주는 것이 안전성 측면에서 더 좋음.
+
+
+
+
+
+//자바에서 객체를 지정하고 생성하는 방법
+//방법1
+var c = {}; //c는 객체라고 명시해주는 것! 변수와는 다름. var c;라고 써주면 에러
+c.name='ckt';
+c.age=30;
+c.score = [10,20,30];
+c.add=function(a,b){
+	return a+b; //c라는 객체안에 있는 멤버함수
+};
+
+console.log(c.add(4,5));
+
+
+
+/* class p{
+	string name;
+	add(a,b){ return a+b};
+};
+ */
+alert(c.name);
+
+ 
+ 
+ 
+//방법2
+var d={
+		name : 'ckt',
+		age : 30,
+		score : [10,20,30]
+};//앞과 같은 표현방법
+
+f2(d);
+console.log(d.name);
+console.log(d.score);
+
+f2(c);
+c.weight = 64.5;
+console.log(c.name);
+console.log(c.money);
+
+function person(name,age){
+	this.name = name;
+	this.age = age;
+	this.add = function(a,b){return a+b};
+	return this; //생성자 역할을 하는 함수는 return this를 써주는 것이 좋음.
+}
+
+
+
+//방법3
+var p = new person("이순신",50); //함수를 정의할 때 return this를 써주면, new를 쓰지 않아도 상관없음
+var p2= person("홍길동",30);
+
+console.log(p2.add(5,5));
+alert(p2.name); 
+person("유관순",18);
+
+
+
+//location.port==location["port"]
+//p2.name==p2["name"]
+ 
+p2.name
+p2.age
+
+a="age";
+p2[a]; //30을 반환함
+
+
+</script>
+
+
+
+<!-- 자바스크립트는 객체를 정의할 때 추상화 개념이 자바와는 다르게 -->

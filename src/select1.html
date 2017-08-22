@@ -1,0 +1,31 @@
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery.js"></script>
+
+<div>장바구니</div>
+<div class='item' sel=0>사과 100 7</div> <!-- 사과에만 click 이벤트를 주고싶을 땐 <p></p>사이에 사과를 넣어주고 이벤트도 p값 안에 주면 됨 -->
+<div class='item' sel=0>바나나 1000 2</div>
+<div class='item' sel=0>복숭아 2000 1</div>
+
+<button id=Btn>계산하기</button>
+
+<script>
+$("div.item").click(function() {
+	//$(this).css("color","red"); /* this는 클릭이벤트를 나타내는 주체 */
+	attSel = $(this).attr("sel"); //sel이라는 attribute를 읽어줘
+	//$(this).attr("sel","1"); //자기자신의 sel값을 1로 바꿔줘
+	if(attSel==0){
+		$(this).attr("sel","1");
+		$(this).css("color","red");
+	} else{
+		$(this).attr("sel","0");
+		$(this).css("color","black");
+		$(this).css("background","white");
+	}
+});
+
+$("#Btn").click(function(){
+	$("div[sel=1]").css("background","yellow");
+});
+
+
+</script>

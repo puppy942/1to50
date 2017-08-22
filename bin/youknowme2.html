@@ -1,0 +1,24 @@
+<script>
+var index = 0;
+ function answerClick() {
+
+ 	var imgs = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+ 	var corrects = ["루피","뽀로로","에디","크롱","패티"];
+ 	
+ 	if(answer.value==corrects[index])
+ 		console.log("correct");
+ 	else console.log("wrong");
+ 	
+ 	index = Math.floor(Math.random()*imgs.length);
+ 	myimg.src=imgs[index];
+ 	
+ }
+</script>
+
+<img src=1.jpg width=500 height=700 id=myimg>
+
+<br> 
+<input type=text id=answer value="정답을 입력하세요.">
+<!--  -->
+<button onclick ="answerClick()">정답</button>
+

@@ -1,0 +1,21 @@
+<script>
+ function next() {
+ 	//alert('클릭');
+ 	var imgs = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];//모든 문장의 끝에는 ;이 있어야.
+ 	myimg.src = imgs[Math.floor(Math.random()*imgs.length)];
+ 	/*myimg.src = imgs[math.floor(math.random()*5)];
+ 	math.random은 0부터 0.999까지 random으로 뽑아줌. *5 하면 0부터 4.99까지. 
+ 	floor은 내림함수. 0-4까지 정수값만 출력하기 위해 
+ 	5번째 라인은 document.getElementById("myimg").src="";이라고 써줘야 정확한 표현.*/
+ 	
+ 	//alert('ok!!');
+ 	console.log("ok!!"); //화면에 뜨지 않고 콘솔창에만 뜬다.
+ }
+</script>
+
+<img src=1.jpg width=500 height=500 id=myimg>
+
+<br> 
+<!--  -->
+<button onclick ="next()">next</button>
+

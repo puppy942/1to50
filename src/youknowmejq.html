@@ -1,0 +1,101 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+<style>
+@font-face{
+	font-family:"gametitleFont";/* 변수명은 내가 마음대로 정해도 됨 */
+	src:url('Codystar-Light');
+}
+#time{
+	font-family:"gametitleFont";
+	font-size : 20pt;
+	color : pink;
+}
+</style>
+
+<script>
+var count = 0;
+var idxs = [0,1,2,3,4,5,6,7];
+var imgs = ["1.png","2.png","3.png","4.png","5.png",
+ 	            "6.png","7.png","8.png"];
+var corrects = ["가을동화","꽃보다남자","다모","대장금","도깨비","미생","시크릿가든","파리의연인"];
+var correctNo = 0;
+
+function shuffle(a){
+	var j,x,i;
+	for(i=a.length; i; i--){ 
+		j=Math.floor(Math.random()*i); 
+		x=a[i-1];
+		a[i-1]=a[j];
+		a[j]=x;
+	}
+}
+
+
+ 
+
+$(document).ready(function() {
+	 setInterval(function(){
+			$("#time").text(parseInt($("#time").text())+1);
+			},1000);
+	 
+	$("#myimg").attr("src",imgs[idxs[++count]]);
+
+	$("#btn").click(function(){
+	 		if($("#answer").val()==corrects[idxs[count]])
+	 	 		{console.log("correct");
+	 			$("#msg").html("<font color=green>정답입니다!</font>");
+	 			correctNo++;
+	 			$("#correctNo").html(correctNo);
+	 			}
+	 	 	else 
+	 			{console.log("wrong");
+	 	 		$("#msg").html("<font color=red>오답입니다!</font>");}
+	 		$("#answer").val("");
+	 		$("#answer").focus();
+	 		$("#myimg").attr("src",imgs[idxs[++count]]);
+	 	});
+	 	
+	
+
+		//myimg.src=imgs[idxs[++count]];
+
+	 	
+	 	//count = Math.floor(Math.random()*imgs.length);
+});
+
+ 
+ 
+ 
+ 
+</script>
+<div id='time'>0</div>
+
+<text>드라마 제목 맞히기</text>
+<br>
+<img width=500 height=200 id=myimg>
+<br>
+<input type=text id=answer>
+<button id=btn>정답</button>
+
+<div id=msg> 
+*띄어쓰기 없이 입력하세요.
+<br>
+<img src=correct.jpg width=50 height=50>
+<text>맞힌 갯수 : </text><text id=correctNo>0</div><text>개</text>
+<br>
+<img src=wrong.png width=50 height=50>
+<text>틀린 갯수 : </text><text id=wrongNo>0</div><text>개</text>
+<!--  -->
+
+
+<script>
+console.log("ok!");
+//alert(idxs);
+shuffle(idxs);
+//alert(idxs);
+myimg.src=imgs[idxs[count]];
+</script>
+
+
+
+

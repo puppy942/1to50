@@ -1,0 +1,53 @@
+<script>
+var count = 0;
+var idxs = [0,1,2,3,4,5,6,7];
+var imgs = ["1.png","2.png","3.png","4.png","5.png",
+ 	            "6.png","7.png","8.png"];
+var corrects = ["가을동화","꽃보다남자","다모","대장금","도깨비","미생","시크릿가든","파리의연인"];
+
+function shuffle(a){
+	var j,x,i;
+	for(i=a.length; i; i--){ //i가 0이면 false, 0이 아니면 true
+		j=Math.floor(Math.random()*i); //i대신 a.length를 써도 무방. i로 쓰면 랜덤 값 범위가 변함
+		x=a[i-1];
+		a[i-1]=a[j];
+		a[j]=x;
+	}
+}
+
+ function answerClick() {
+ 	
+ 	if(answer.value==corrects[idxs[count]])
+ 		msg.innerHTML = "<font color=blue>정답입니다!</font><br>문제 수 : "+(count+1);
+ 	else 
+		msg.innerHTML = "<font color=red>오답입니다!</font><br>문제 수 : "+(count+1);
+ 	myimg.src=imgs[idxs[++count]];
+	answer.value = "";
+	answer.focus();
+ 	//count = Math.floor(Math.random()*imgs.length);
+ 
+ }
+ 
+ 
+ 
+</script>
+
+<img width=500 height=200 id=myimg>
+
+<br> 
+<input type=text id=answer>
+<button onclick ="answerClick()">정답</button>
+<div id=msg> 
+*띄어쓰기 없이 입력하세요.
+</div>
+<!--  -->
+
+
+<script>
+console.log("ok!");
+//alert(idxs);
+shuffle(idxs);
+//alert(idxs);
+myimg.src=imgs[idxs[count]];
+</script>
+

@@ -1,0 +1,20 @@
+//Json
+
+var p1={
+		age : 20;
+		name: "이순신";
+		hobby:["영화","수영"];
+		};
+p1.age
+p1.hobby[1]
+
+
+//xml
+
+<Person>
+<age> 20</age>
+<name>이순신</name>
+<hobbys>
+<hobby>영화</hobby>
+<hobby>수영</hobby>
+</hobbys>

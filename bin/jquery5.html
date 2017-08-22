@@ -1,0 +1,44 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<div id=msg></div>
+
+<script>
+$(document).ready(function () {
+    var array = [
+        { name: 'Hanbit Media', link: 'http://hanb.co.kr' },
+        { name: 'Naver', link: 'http://naver.com' },
+        { name: 'Daum', link: 'http://daum.net' },
+        { name: 'Paran', link: 'http://paran.com' }
+    ];
+    
+    console.log(array[0]);
+    console.log(array[0].name);
+    console.log(array[0].img);//오류남 0번째 행에는 img가 없음
+    
+     $.each(array, function (index, item) {
+        var output = '';
+        output += '<a href="' + item.link + '">';
+        output += ' <h1>' + item.name + '</h1>';
+        output += '</a>';
+        //document.body.innerHTML += output;
+         var html=$("#msg").html();
+        $("#msg").html(html+output);
+    });
+    
+    /*$.each(array,fun); //반복적인 것을 수행할 때 each
+    ==
+    fun(array[0]);
+    fun(array[1]);
+    fun(array[2]);
+    fun(array[3]); //위의 한줄과 같은 식
+    ==
+    for(int i=0;i<length.array;i++){
+    	array[i];
+    }	
+    ==	 */
+    $.each(array,function(i,j){
+    	console.log(i);
+    	console.log(j.name)
+    });
+});
+</script>
+

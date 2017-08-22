@@ -1,0 +1,47 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+<div>장바구니</div>
+<div class='item' sel=0>사과 100 7</div> 
+<div class='item' sel=0>바나나 1000 2</div>
+<div class='item' sel=0>복숭아 5000 1</div>
+
+<script>
+//1번 방법
+/* var a = $("div.item").filter(
+		function(index){
+	return index==0;
+	}
+);
+a.css("color","red"); */
+
+// 2번 방법 => 1번과 비교하여 두 줄에 걸친 문장을 한번에 쓸 수 있다. 
+/*3번과 비교하여 확장성 있는 구조는 2번 방법. -> 코드를 계속 나누어야 튼튼한 코드가 될 수 있음.
+함수 안의 구조가 작고, 디자이너와 개발자의 역할을 나눌 수 있음. */
+$("div.item").filter(function(index){
+			return index==0; //index==0인 것을 return하라
+		}).css("color","red").hide(5000);
+
+
+//3번 방법 => 모든 과정이 함수 안에서 이루어짐. 
+/* $("div.item").each(
+		function(index,obj){
+			if(index==0){
+				obj.css("color","red").hide(5000)
+			}
+		}
+	); //each도 뒤에다 css를 붙일 수 있으나 뒤에다 붙이면 모든 것에 색깔이 바뀜.
+ */
+
+
+
+
+/* //1. 모든 객체가 자기자신을 return하므로 무한대로 .을 찍어서 확장시킬수있다. =>chain rule
+$("div.item").css("color","red").css("background","yellow").hide(5000);
+
+//2. 1번보다 시간이 오래걸림.
+$("div.item").css("color","red");
+$("div.item").css("background","yellow");
+$("div.item").hide(5000); */
+
+
+</script>

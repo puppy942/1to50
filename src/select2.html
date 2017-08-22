@@ -1,0 +1,28 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+<div>장바구니</div>
+<div class='item' sel=0>사과 100 7</div> 
+<div class='item' sel=0>바나나 1000 2</div>
+<div class='item' sel=0>복숭아 5000 1</div>
+
+<script>
+
+var s = "사과 100 7";
+var token = s.split(/\s+/); //s는 space, +는 한번 이상. 따라서 한 번 이상의 space. 정규식의 일종
+			//s.split(" "); ()안에 있는 구분자를 중심으로 문자를 구분. 여기선 스페이스
+console.log(token[0]);  
+console.log(token[1]*token[2]);
+
+$("div.item").each(function(i, element) {
+	
+	var s=$(element).text();
+	var token = s.split(/\s+/);
+	
+	if(token[1]*token[2]>=3000)
+		$(element).css("color","red");
+	console.log($(element).text());
+	/* if(i%2==0)
+	$(element).css("color","red"); */
+	
+});
+</script>

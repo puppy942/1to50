@@ -1,0 +1,24 @@
+<script>
+	document.write("hello ");
+	var w = window.open("");
+	w.document.write("hello 2");
+	/* for (var key in screen){
+		console.log(key+":"+screen[key]);
+	}
+	 */
+	 
+	//location.port==location["port"]
+	//p2.name==p2["name"]
+	/* console.log(location["port"]); //port라고만 쓰면 port라는 변수를 불러일으키는 것
+	for(var key in location){
+		console.log(key+":"+location[key]);
+	}
+	  */
+	 //location.href="ok.html";
+	 
+function back(){
+	history.go(-1);
+}
+</script>
+
+<a href=back()>뒤로가기</a>

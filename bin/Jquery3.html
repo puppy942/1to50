@@ -1,0 +1,18 @@
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery.js"></script>
+
+<select>
+<option>Apple</option>
+<option>Dog</option>
+<option>Cat</option>
+<option>Bird</option>
+<option>Hamster</option>
+</select>
+
+<script>
+setTimeout(function(){	
+		var value=$('select>option:selected').val();
+		alert(value);
+	},5000);
+	
+</script>

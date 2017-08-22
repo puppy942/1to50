@@ -1,0 +1,155 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<style>
+.btn{
+	width:75px; height:75px;
+	font-size : 25pt;
+	background : yellow;
+	}
+#start{
+background : pink;
+font-size : 15pt;
+width: 75px; height:50px;
+}
+@font-face{
+	font-family:"timer"; 
+	src : url('Codystar-Light');
+}
+#time{
+	font-family:"gametitleFont";
+	font-size : 25pt;
+	color : red;
+}
+</style>
+
+<script>
+function shuffle(a){
+	var j,x,i;
+	for(i=a.length; i; i--){ 
+		j=Math.floor(Math.random()*i); 
+		x=a[i-1];
+		a[i-1]=a[j];
+		a[j]=x;
+	}
+	
+}
+
+	
+</script>
+<div id=time>0</div>
+
+<table> <!-- 정렬할때 table을 씀 -->
+ <tr>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ </tr>
+  <tr>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ </tr>
+  <tr>
+ 	<td> <button class=btn>R</button> </td>
+ 	<td> <button class=btn>E</button> </td>
+ 	<td> <button class=btn>A</button> </td>
+ 	<td> <button class=btn>D</button> </td>
+ 	<td> <button class=btn>Y</button> </td>
+ </tr>
+   <tr>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ </tr>
+   <tr>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ 	<td> <button class=btn></button> </td>
+ </tr>
+</table>
+<button id=start>Start!</button>
+
+<script>
+//$("button.btn").text("45");
+
+$("#start").click(function() {
+	shuffle(data1);
+	$("button.btn").each(function(i,obj){
+		$(obj).text(data1[i]); //$()를 써주면 jquery 객체로 바뀜
+	});	
+	setInterval(function(){
+		$("#time").text(parseInt($("#time").text())+1);
+		},1000);
+});
+var data1=[1,2,3,4,5,6,7,8,9,10,11,12,
+          13,14,15,16,17,18,19,20,21,22,23,24,25];
+var data2=[26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+      		41,42,43,44,45,46,47,48,49,50];
+
+
+shuffle(data2);
+
+ 
+ 
+/*//방법1
+$("button.btn").each(function(i,obj){
+	$(obj).text(data1[i]); //$()를 써주면 jquery 객체로 바뀜
+});
+
+
+ //방법2 
+ 각각의 버튼에 아이디를 만든 후, for문 돌리기 => 방법1 보다 좋지 않음. 각각의 버튼에 아이디를 생성해야하기 때문에
+for(i=0;i<25;i++){
+$("#btn"+i).text("data[i]");
+}; */  
+
+
+
+/* 모두 같은 표현방식 
+ msg.innerHTML = "dkt";
+document.getElementById("msg").innerHTML="dkt";
+$(document.getElementById("msg")).html("dkt");
+$("#msg").html("dkt"); 
+*/
+
+var value = 1;
+$("button.btn").click(function() {
+	var answer = $(this).text(); //java script 객체인 this를 jquery 객체로 바꿔주기 위해 $(this)라고 써야함.
+	
+
+	if(answer == value){
+		 if(answer<=25){
+			 	$(this).fadeOut(200,function(){
+			 		$(this).text(data2[value-1]); //따로 i라는 변수 만들지말고 value활용
+			 		value++;
+			 		//value=5일때 button을 누루면 console.log(value)이 6이 나옴. 밑에 value++가 실행된 후 이 문장이 실행되기 때문
+			 	}); //text를 fadeout 안이 아닌 밑에 써주면 비동기식으로 fadeout 되기 전 값이 바뀜.
+				$(this).fadeIn(200);
+			} else{
+				$(this).text("");
+				value++;
+				
+				/*점수를 유저별로 기록하고 싶을 때
+				if (value>50)
+					scorerecord.jsp?user=hong&time=67.9 */
+			}
+		console.log('correct');
+		}
+	else{
+		$(this).effect("shake"); //jquery library를 다운받아야 에러가 안뜸
+	}
+	});
+
+
+
+
+</script>
+

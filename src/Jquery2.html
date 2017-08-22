@@ -1,0 +1,15 @@
+<script type="text/javascript" 
+src="http://code.jquery.com/jquery.js"></script>
+<script>
+$(document).ready(function (){
+	$('input[data=hello]').val('hello!');
+	$('input[data*=hello]').val('hello2!'); 
+	$('input[data~=hello]').val('hello3!');
+	/*  =는 정확하게 매칭
+		*= 존재?
+   		~= 단어로서 존재 */
+});
+</script>
+<input type=text data="hello"/> 
+<input type=text data="123hello123"/>
+<input type=text data="123 hello 123" />
